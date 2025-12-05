@@ -14,6 +14,35 @@ const createGrid = () => {
     }
 };
 
+// Счетчики
+let hits = 0;
+let misses = 0;
+
+// Элементы для отображения результатов
+const hitsDisplay = document.querySelector('.dead');
+const missesDisplay = document.querySelector('.lost');
+
+
+// Обработка клика по ячейке
+const handleCellClick = (event) => {
+    const target = event.target;
+    
+    if (target.closest('.cell').contains(Character.elementNode)) {
+        // Попадание
+        hits++;
+        hitsDisplay.textContent = hits;
+        Character.elementNode.remove();
+        placeCharacter();
+        checkGameOver();
+    } else {
+        // Промах
+        misses++;
+        missesDisplay.textContent = misses;
+        checkGameOver();
+    }
+};
+
+
 // Генератор случайных чисел
 const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;

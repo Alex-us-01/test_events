@@ -92,7 +92,7 @@ body {
 }
 
 .cell:hover {
-    background-color: rgba(20, 70, 59, 0.8); /* Исправленный RGBA формат */
+    background-color: rgba(88, 228, 197, 0.253); /* Исправленный RGBA формат */
     transform: scale(1.02);
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
     transition: all 0.2s ease;
