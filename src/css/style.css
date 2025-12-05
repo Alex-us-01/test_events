@@ -9,6 +9,9 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.header {
+	text-align: center;
+}
 .game-field {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
