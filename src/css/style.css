@@ -51,14 +51,16 @@ body {
 }
 
 .game-container {
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    margin: 20px auto;
+    width: 440px; /* Ширина + padding game-field (420 + 2*10) */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 .header {
-    margin-bottom: 20px;
+    width: 100%;
     text-align: center;
 }
 
@@ -69,13 +71,13 @@ body {
 }
 
 .game-field {
+    width: 420px;
+    height: 420px;
+    padding: 10px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 5px;
-    width: 420px;
-    height: 420px;
-    padding: 10px;
     box-sizing: border-box;
 }
 
