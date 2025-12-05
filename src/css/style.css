@@ -88,14 +88,14 @@ body {
     align-items: center;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    cursor: pointer; /* Добавляем курсор "указатель" */
+    cursor: pointer;
 }
 
 .cell:hover {
-    background-color: #14463b8c; /* Меняем цвет фона при наведении */
-    transform: scale(1.02); /* Добавляем небольшое увеличение */
-    box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Добавляем тень */
-    transition: all 0.2s ease; /* Плавный переход для всех свойств */
+    background-color: rgba(20, 70, 59, 0.8); /* Исправленный RGBA формат */
+    transform: scale(1.02);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
 }
 
 img {
@@ -103,3 +103,4 @@ img {
     height: auto;
     object-fit: contain;
 }
+
