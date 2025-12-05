@@ -50,12 +50,12 @@ body {
 }
 
 .game-container {
-    width: 440px; /* Ширина + padding game-field (420 + 2*10) */
+    width: 440px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Центрируем по горизонтали */
+    align-items: center;
     gap: 20px;
-    justify-content: center; /* Центрируем по вертикали */
+    justify-content: center;
 }
 
 .header {
@@ -88,10 +88,11 @@ body {
     align-items: center;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    cursor: pointer; /* Добавляем курсор "указатель" */
 }
 
 .cell:hover {
-    background-color: #cccccc52; /* Меняем цвет фона при наведении */
+    background-color: #14463b8c; /* Меняем цвет фона при наведении */
     transform: scale(1.02); /* Добавляем небольшое увеличение */
     box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Добавляем тень */
     transition: all 0.2s ease; /* Плавный переход для всех свойств */
