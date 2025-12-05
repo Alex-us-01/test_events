@@ -480,15 +480,13 @@ const handleCellClick = (event) => {
         hits++;
         hitsDisplay.textContent = hits;
         Character.elementNode.remove();
-        
-        // Сразу после клика запускаем новое появление
-        placeCharacter();
     } else {
         // Промах
         misses++;
         missesDisplay.textContent = misses;
-        checkGameOver();
     }
+    
+    checkGameOver();
 };
 
 // Размещение персонажа в случайной позиции
@@ -499,19 +497,18 @@ const placeCharacter = () => {
     // Добавляем изображение в ячейку
     cells[randomCell].append(Character.elementNode);
     
-    // Удаляем изображение через 1 секунду и помещаем в новую ячейку
+    // Удаляем изображение через 1 секунду
     setTimeout(() => {
         Character.elementNode.remove();
         misses++;
         missesDisplay.textContent = misses;
         checkGameOver();
-        placeCharacter(); // Немедленно помещаем в новую ячейку
     }, 1000);
 };
 
 // Проверка окончания игры
 const checkGameOver = () => {
-    if (hits >= 10 || misses >= 5) {
+    if (misses >= 5) {
         stopGame();
         alert(`Игра окончена!\nПопадания: ${hits}\nПропуски: ${misses}`);
     }
@@ -519,31 +516,19 @@ const checkGameOver = () => {
 
 // Инициализация
 createGrid();
-placeCharacter();
 
-// Сохраняем идентификатор интервала
-let gameInterval;
-
-// Запуск таймера
+// Запускаем появление гоблина каждые 1.5 секунды
 const startGame = () => {
-    gameInterval = setInterval(() => {
-        // Если персонаж уже исчез, запускаем новое появление
-        if (!Character.elementNode.parentNode) {
-            placeCharacter();
-        }
-    }, 1000);
+    setInterval(() => {
+        placeCharacter();
+    }, 1500);
 };
 
-// Остановка таймера
+// Остановка игры
 const stopGame = () => {
+    // Очистка всех таймеров и интервалов
     clearInterval(gameInterval);
 };
-
-// Пример добавления кнопки остановки
-const stopButton = document.createElement('button');
-stopButton.textContent = 'Стоп';
-stopButton.addEventListener('click', stopGame);
-document.body.append(stopButton);
 
 // Запускаем игру при загрузке
 startGame();
