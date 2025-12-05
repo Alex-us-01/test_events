@@ -1,18 +1,127 @@
+// // Импортируем персонажа
+// import { Character } from './Character.js';
+
+// // Создание поля
+// const gameField = document.getElementById('gameField');
+// const fieldSize = 4;
+
+// // Создание сетки
+// const createGrid = () => {
+//     for (let i = 0; i < fieldSize * fieldSize; i++) {
+//         const cell = document.createElement('div');
+//         cell.classList.add('cell');
+//         gameField.append(cell);
+//     }
+// };
+
+// // Счетчики
+// let hits = 0;
+// let misses = 0;
+
+// // Элементы для отображения результатов
+// const hitsDisplay = document.querySelector('.dead');
+// const missesDisplay = document.querySelector('.lost');
+
+
+// // Обработка клика по ячейке
+// const handleCellClick = (event) => {
+//     const target = event.target;
+    
+//     if (target.closest('.cell').contains(Character.elementNode)) {
+//         // Попадание
+//         hits++;
+//         hitsDisplay.textContent = hits;
+//         Character.elementNode.remove();
+//         placeCharacter();
+//         checkGameOver();
+//     } else {
+//         // Промах
+//         misses++;
+//         missesDisplay.textContent = misses;
+//         checkGameOver();
+//     }
+// };
+
+
+// // Генератор случайных чисел
+// const getRandomInt = (min, max) => {
+//     return Math.floor(Math.random() * (max - min)) + min;
+// };
+
+// // Размещение персонажа в случайной позиции
+// const placeCharacter = () => {
+//     const randomCell = getRandomInt(0, fieldSize * fieldSize);
+//     const cells = document.getElementsByClassName('cell');
+    
+//     // Перемещаем персонажа в новую ячейку
+//     cells[randomCell].append(Character.elementNode);
+// };
+
+// // Перемещение персонажа
+// const moveCharacter = () => {
+//     const cells = document.getElementsByClassName('cell');
+//     let currentPosition = -1;
+    
+//     // Поиск текущей позиции
+//     for (let i = 0; i < cells.length; i++) {
+//         if (cells[i].contains(Character.elementNode)) {
+//             currentPosition = i;
+//             break;
+//         }
+//     }
+    
+//     // Генерация новой позиции
+//     let newPosition = currentPosition;
+//     while (newPosition === currentPosition) {
+//         newPosition = getRandomInt(0, fieldSize * fieldSize);
+//     }
+    
+//     // Перемещаем персонажа в новую позицию
+//     cells[newPosition].append(Character.elementNode);
+// };
+
+
+// const checkGameOver = () => {
+//     if (hits >= 10 || misses >= 5) {
+//         stopGame();
+//         alert(`Игра окончена!\nПопадания: ${hits}\nПропуски: ${misses}`);
+//     }
+// };
+
+
+// // Инициализация
+// createGrid();
+// placeCharacter();
+
+// // Сохраняем идентификатор интервала
+// let gameInterval;
+
+// // Запуск таймера
+// const startGame = () => {
+//     gameInterval = setInterval(moveCharacter, 1000);
+// };
+
+// // Остановка таймера
+// const stopGame = () => {
+//     clearInterval(gameInterval);
+// };
+
+// // Пример добавления кнопки остановки
+// const stopButton = document.createElement('button');
+// stopButton.textContent = 'Стоп';
+// stopButton.addEventListener('click', stopGame);
+// document.body.append(stopButton);
+
+// // Запускаем игру при загрузке
+// startGame();
+
+
 // Импортируем персонажа
 import { Character } from './Character.js';
 
 // Создание поля
 const gameField = document.getElementById('gameField');
 const fieldSize = 4;
-
-// Создание сетки
-const createGrid = () => {
-    for (let i = 0; i < fieldSize * fieldSize; i++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        gameField.append(cell);
-    }
-};
 
 // Счетчики
 let hits = 0;
@@ -22,6 +131,20 @@ let misses = 0;
 const hitsDisplay = document.querySelector('.dead');
 const missesDisplay = document.querySelector('.lost');
 
+// Создание сетки
+const createGrid = () => {
+    for (let i = 0; i < fieldSize * fieldSize; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.addEventListener('click', handleCellClick);
+        gameField.append(cell);
+    }
+};
+
+// Генератор случайных чисел
+const getRandomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
+};
 
 // Обработка клика по ячейке
 const handleCellClick = (event) => {
@@ -42,18 +165,10 @@ const handleCellClick = (event) => {
     }
 };
 
-
-// Генератор случайных чисел
-const getRandomInt = (min, max) => {
-    return Math.floor(Math.random() * (max - min)) + min;
-};
-
 // Размещение персонажа в случайной позиции
 const placeCharacter = () => {
     const randomCell = getRandomInt(0, fieldSize * fieldSize);
     const cells = document.getElementsByClassName('cell');
-    
-    // Перемещаем персонажа в новую ячейку
     cells[randomCell].append(Character.elementNode);
 };
 
@@ -78,6 +193,14 @@ const moveCharacter = () => {
     
     // Перемещаем персонажа в новую позицию
     cells[newPosition].append(Character.elementNode);
+};
+
+// Проверка окончания игры
+const checkGameOver = () => {
+    if (hits >= 10 || misses >= 5) {
+        stopGame();
+        alert(`Игра окончена!\nПопадания: ${hits}\nПропуски: ${misses}`);
+    }
 };
 
 // Инициализация
