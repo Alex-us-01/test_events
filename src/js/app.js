@@ -499,12 +499,13 @@ const placeCharacter = () => {
     // Добавляем изображение в ячейку
     cells[randomCell].append(Character.elementNode);
     
-    // Удаляем изображение через 1 секунду
+    // Удаляем изображение через 1 секунду и помещаем в новую ячейку
     setTimeout(() => {
         Character.elementNode.remove();
         misses++;
         missesDisplay.textContent = misses;
         checkGameOver();
+        placeCharacter(); // Немедленно помещаем в новую ячейку
     }, 1000);
 };
 
