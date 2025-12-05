@@ -38,7 +38,6 @@ img {
     height: auto;
     object-fit: contain;
 } */
-
 body {
     display: flex;
     justify-content: center;
@@ -52,11 +51,11 @@ body {
 
 .game-container {
     width: 440px; /* Ширина + padding game-field (420 + 2*10) */
-    height: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Центрируем по горизонтали */
     gap: 20px;
+    justify-content: center; /* Центрируем по вертикали */
 }
 
 .header {
