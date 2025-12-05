@@ -1,4 +1,5 @@
-import goblinImage from '../img/goblin.png';
+// Импортируем персонажа
+import { Character } from './Character.js';
 
 // Создание поля
 const gameField = document.getElementById('gameField');
@@ -13,11 +14,6 @@ const createGrid = () => {
     }
 };
 
-// Создание персонажа
-const character = document.createElement('img');
-character.src = goblinImage;
-character.alt = 'goblin';
-
 // Генератор случайных чисел
 const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -29,7 +25,7 @@ const placeCharacter = () => {
     const cells = document.getElementsByClassName('cell');
     
     // Перемещаем персонажа в новую ячейку
-    cells[randomCell].append(character);
+    cells[randomCell].append(Character.elementNode);
 };
 
 // Перемещение персонажа
@@ -39,7 +35,7 @@ const moveCharacter = () => {
     
     // Поиск текущей позиции
     for (let i = 0; i < cells.length; i++) {
-        if (cells[i].contains(character)) {
+        if (cells[i].contains(Character.elementNode)) {
             currentPosition = i;
             break;
         }
@@ -52,7 +48,7 @@ const moveCharacter = () => {
     }
     
     // Перемещаем персонажа в новую позицию
-    cells[newPosition].append(character);
+    cells[newPosition].append(Character.elementNode);
 };
 
 // Инициализация
