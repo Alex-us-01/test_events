@@ -151,6 +151,7 @@ const getRandomInt = (min, max) => {
 // Обработка клика по ячейке
 const handleCellClick = (event) => {
     const target = event.target;
+    console.log ("CLICK")
     
     if (target.closest('.cell').contains(Character.elementNode)) {
         // Попадание
@@ -169,9 +170,13 @@ const handleCellClick = (event) => {
 
 // Размещение персонажа в случайной позиции
 const placeCharacter = () => {
+    console.log("placeCharacter")
+    let counter = 0;
     const randomCell = getRandomInt(0, fieldSize * fieldSize);
     const cells = document.getElementsByClassName('cell');
     cells[randomCell].append(Character.elementNode);
+    counter++
+    console.log(counter)
 };
 
 // Перемещение персонажа
