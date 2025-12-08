@@ -181,7 +181,7 @@ const placeCharacter = () => {
 
 // Перемещение персонажа
 const moveCharacter = () => {
-    console.Consolelog("moveCharacter")
+    console.log("moveCharacter")
     const cells = document.getElementsByClassName('cell');
     let currentPosition = -1;
     
