@@ -521,12 +521,15 @@ const checkGameOver = () => {
 // Инициализация
 createGrid();
 
+// Таймер для появления персонажа
+let gameInterval;
+
 // Запускаем появление гоблина
 const startGame = () => {
     placeCharacter();
     
     // Запускаем таймер для следующего появления
-    setInterval(() => {
+    gameInterval = setInterval(() => {
         placeCharacter();
     }, 2000); // Интервал между появлениями
 };
